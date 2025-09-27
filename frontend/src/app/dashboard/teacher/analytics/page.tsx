@@ -124,14 +124,15 @@ export default function AnalyticsPage() {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Analytics</h1>
-              <p className="text-gray-600 mt-2">Track performance and engagement across your courses</p>
+              <h1 className="text-3xl font-bold" style={{ color: 'var(--color-base-content)' }}>Analytics</h1>
+              <p className="mt-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Track performance and engagement across your courses</p>
             </div>
             <div className="flex items-center space-x-3">
               <select
                 value={selectedCourse}
                 onChange={(e) => setSelectedCourse(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="px-3 py-2 rounded-lg focus:ring-2 border-abyss"
+                style={{ background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
               >
                 <option value="all">All Courses</option>
                 {courses.map(course => (
@@ -141,14 +142,15 @@ export default function AnalyticsPage() {
               <select
                 value={selectedPeriod}
                 onChange={(e) => setSelectedPeriod(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="px-3 py-2 rounded-lg focus:ring-2 border-abyss"
+                style={{ background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
               >
                 <option value="week">This Week</option>
                 <option value="month">This Month</option>
                 <option value="quarter">This Quarter</option>
                 <option value="year">This Year</option>
               </select>
-              <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+              <button className="flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors btn-abyss-outline">
                 <Download className="w-4 h-4" />
                 <span>Export</span>
               </button>
@@ -158,69 +160,69 @@ export default function AnalyticsPage() {
 
         {/* Overview Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="rounded-xl p-6 shadow-sm abyss-card border-abyss">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Total Students</p>
-                <p className="text-2xl font-bold text-gray-900">{overviewStats.totalStudents}</p>
+                <p className="text-sm font-medium" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Total Students</p>
+                <p className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>{overviewStats.totalStudents}</p>
               </div>
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <Users className="w-6 h-6 text-blue-600" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
+                <Users className="w-6 h-6" style={{ color: 'var(--color-primary)' }} />
               </div>
             </div>
             <div className="mt-4">
-              <span className="text-sm text-green-600 font-medium">
+              <span className="text-sm font-medium" style={{ color: 'var(--color-success)' }}>
                 +{overviewStats.activeStudents} active
               </span>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="rounded-xl p-6 shadow-sm abyss-card border-abyss">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Average Score</p>
-                <p className="text-2xl font-bold text-gray-900">{overviewStats.averageScore}%</p>
+                <p className="text-sm font-medium" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Average Score</p>
+                <p className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>{overviewStats.averageScore}%</p>
               </div>
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <Target className="w-6 h-6 text-green-600" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
+                <Target className="w-6 h-6" style={{ color: 'var(--color-success)' }} />
               </div>
             </div>
             <div className="mt-4">
-              <span className="text-sm text-green-600 font-medium">
+              <span className="text-sm font-medium" style={{ color: 'var(--color-success)' }}>
                 +5.2% from last month
               </span>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="rounded-xl p-6 shadow-sm abyss-card border-abyss">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Engagement Rate</p>
-                <p className="text-2xl font-bold text-gray-900">{overviewStats.averageEngagement}%</p>
+                <p className="text-sm font-medium" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Engagement Rate</p>
+                <p className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>{overviewStats.averageEngagement}%</p>
               </div>
-              <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                <Activity className="w-6 h-6 text-yellow-600" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
+                <Activity className="w-6 h-6" style={{ color: 'var(--color-warning)' }} />
               </div>
             </div>
             <div className="mt-4">
-              <span className="text-sm text-green-600 font-medium">
+              <span className="text-sm font-medium" style={{ color: 'var(--color-success)' }}>
                 +3.1% from last month
               </span>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="rounded-xl p-6 shadow-sm abyss-card border-abyss">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Total Study Time</p>
-                <p className="text-2xl font-bold text-gray-900">{overviewStats.totalStudyTime}h</p>
+                <p className="text-sm font-medium" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Total Study Time</p>
+                <p className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>{overviewStats.totalStudyTime}h</p>
               </div>
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <Clock className="w-6 h-6 text-purple-600" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
+                <Clock className="w-6 h-6" style={{ color: 'var(--color-secondary)' }} />
               </div>
             </div>
             <div className="mt-4">
-              <span className="text-sm text-green-600 font-medium">
+              <span className="text-sm font-medium" style={{ color: 'var(--color-success)' }}>
                 +125h this month
               </span>
             </div>
@@ -229,57 +231,57 @@ export default function AnalyticsPage() {
 
         {/* Course Analytics */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Course Performance</h3>
+          <h3 className="text-lg font-semibold mb-4" style={{ color: 'var(--color-base-content)' }}>Course Performance</h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {courseAnalytics.map((course) => (
-              <div key={course.id} className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+              <div key={course.id} className="rounded-xl p-6 shadow-sm abyss-card border-abyss">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
-                    <h4 className="font-semibold text-gray-900 mb-1">{course.title}</h4>
-                    <p className="text-sm text-gray-600">{course.students} students enrolled</p>
+                    <h4 className="font-semibold mb-1" style={{ color: 'var(--color-base-content)' }}>{course.title}</h4>
+                    <p className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>{course.students} students enrolled</p>
                   </div>
                   <div className="text-right">
-                    <p className={`text-2xl font-bold ${getScoreColor(course.averageScore)}`}>
+                    <p className="text-2xl font-bold" style={{ color: 'var(--color-success)' }}>
                       {course.averageScore}%
                     </p>
-                    <p className="text-sm text-gray-600">Average Score</p>
+                    <p className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Average Score</p>
                   </div>
                 </div>
 
                 <div className="space-y-4">
                   <div>
-                    <div className="flex items-center justify-between text-sm mb-1">
-                      <span className="text-gray-600">Completion Rate</span>
+                    <div className="flex items-center justify-between text-sm mb-1" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
+                      <span>Completion Rate</span>
                       <span className="font-medium">{course.completionRate}%</span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="w-full rounded-full h-2 border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
                       <div 
-                        className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-                        style={{ width: `${course.completionRate}%` }}
+                        className="h-2 rounded-full transition-all duration-300"
+                        style={{ width: `${course.completionRate}%`, background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}
                       ></div>
                     </div>
                   </div>
 
                   <div>
-                    <div className="flex items-center justify-between text-sm mb-1">
-                      <span className="text-gray-600">Engagement</span>
+                    <div className="flex items-center justify-between text-sm mb-1" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
+                      <span>Engagement</span>
                       <span className="font-medium">{course.engagement}%</span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="w-full rounded-full h-2 border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
                       <div 
-                        className={`h-2 rounded-full transition-all duration-300 ${getEngagementColor(course.engagement)}`}
-                        style={{ width: `${course.engagement}%` }}
+                        className="h-2 rounded-full transition-all duration-300"
+                        style={{ width: `${course.engagement}%`, background: 'linear-gradient(135deg, var(--color-warning), var(--color-success))' }}
                       ></div>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <span className="text-gray-600">Assignments:</span>
+                      <span style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Assignments:</span>
                       <span className="font-medium ml-1">{course.assignments}</span>
                     </div>
                     <div>
-                      <span className="text-gray-600">Study Time:</span>
+                      <span style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Study Time:</span>
                       <span className="font-medium ml-1">{course.totalStudyTime}h</span>
                     </div>
                   </div>
@@ -291,66 +293,66 @@ export default function AnalyticsPage() {
 
         {/* Student Performance */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Top Performing Students</h3>
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          <h3 className="text-lg font-semibold mb-4" style={{ color: 'var(--color-base-content)' }}>Top Performing Students</h3>
+          <div className="rounded-xl shadow-sm abyss-card border-abyss overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gray-50">
+                <thead style={{ background: 'color-mix(in oklch, var(--color-base-100) 20%, transparent)' }}>
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                       Student
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                       Average Score
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                       Progress
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                       Engagement
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                       Actions
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody style={{ background: 'color-mix(in oklch, var(--color-base-200) 50%, transparent)' }}>
                   {studentPerformance.map((student, index) => (
-                    <tr key={index} className="hover:bg-gray-50">
+                    <tr key={index} className="hover:opacity-80 transition-opacity" style={{ borderBottom: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-semibold">
                             {student.name.split(' ').map(n => n[0]).join('')}
                           </div>
                           <div className="ml-3">
-                            <div className="text-sm font-medium text-gray-900">{student.name}</div>
+                            <div className="text-sm font-medium" style={{ color: 'var(--color-base-content)' }}>{student.name}</div>
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`text-sm font-medium ${getScoreColor(student.score)}`}>
+                        <span className="text-sm font-medium" style={{ color: 'var(--color-success)' }}>
                           {student.score}%
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
-                          <div className="w-16 bg-gray-200 rounded-full h-2 mr-2">
+                          <div className="w-16 rounded-full h-2 mr-2 border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
                             <div 
-                              className="bg-blue-600 h-2 rounded-full"
-                              style={{ width: `${student.progress}%` }}
+                              className="h-2 rounded-full"
+                              style={{ width: `${student.progress}%`, background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}
                             ></div>
                           </div>
-                          <span className="text-sm text-gray-600">{student.progress}%</span>
+                          <span className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>{student.progress}%</span>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="text-sm text-gray-600">{student.engagement}%</span>
+                        <span className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>{student.engagement}%</span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button className="text-blue-600 hover:text-blue-900 mr-3">
+                        <button className="mr-3" style={{ color: 'var(--color-primary)' }}>
                           <Eye className="w-4 h-4 inline" />
                         </button>
-                        <button className="text-blue-600 hover:text-blue-900">
+                        <button style={{ color: 'var(--color-primary)' }}>
                           <MessageSquare className="w-4 h-4 inline" />
                         </button>
                       </td>
@@ -364,22 +366,22 @@ export default function AnalyticsPage() {
 
         {/* Engagement Trends */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Engagement Trends</h3>
-            <div className="h-64 flex items-center justify-center bg-gray-50 rounded-lg">
+          <div className="rounded-xl p-6 shadow-sm abyss-card border-abyss">
+            <h3 className="text-lg font-semibold mb-4" style={{ color: 'var(--color-base-content)' }}>Engagement Trends</h3>
+            <div className="h-64 flex items-center justify-center rounded-lg border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 20%, transparent)' }}>
               <div className="text-center">
-                <TrendingUp className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                <p className="text-gray-600">Chart visualization coming soon</p>
+                <TrendingUp className="w-12 h-12 mx-auto mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 50%, transparent)' }} />
+                <p style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Chart visualization coming soon</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Assignment Submissions</h3>
-            <div className="h-64 flex items-center justify-center bg-gray-50 rounded-lg">
+          <div className="rounded-xl p-6 shadow-sm abyss-card border-abyss">
+            <h3 className="text-lg font-semibold mb-4" style={{ color: 'var(--color-base-content)' }}>Assignment Submissions</h3>
+            <div className="h-64 flex items-center justify-center rounded-lg border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 20%, transparent)' }}>
               <div className="text-center">
-                <BarChart3 className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                <p className="text-gray-600">Chart visualization coming soon</p>
+                <BarChart3 className="w-12 h-12 mx-auto mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 50%, transparent)' }} />
+                <p style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Chart visualization coming soon</p>
               </div>
             </div>
           </div>

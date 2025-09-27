@@ -173,13 +173,14 @@ export default function AssignmentsPage() {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Assignments</h1>
-              <p className="text-gray-600 mt-2">Create and manage assignments for your courses</p>
+              <h1 className="text-3xl font-bold" style={{ color: 'var(--color-base-content)' }}>Assignments</h1>
+              <p className="mt-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Create and manage assignments for your courses</p>
             </div>
             <div className="flex items-center space-x-3">
               <button 
                 onClick={() => setShowCreateAssignmentModal(true)}
-                className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors btn-abyss"
+                style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))', color: 'var(--color-accent-content)' }}
               >
                 <Plus className="w-4 h-4" />
                 <span>Create Assignment</span>
@@ -188,7 +189,7 @@ export default function AssignmentsPage() {
           </div>
 
           {/* Tab Navigation */}
-          <div className="border-b border-gray-200">
+          <div className="" style={{ borderBottom: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
             <nav className="-mb-px flex space-x-8">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
@@ -196,11 +197,8 @@ export default function AssignmentsPage() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
-                      activeTab === tab.id
-                        ? 'border-blue-500 text-blue-600'
-                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                    }`}
+                    className={`flex items-center space-x-2 py-3 px-3 font-medium text-sm transition-colors border-abyss rounded-t-lg`}
+                    style={{ color: activeTab === tab.id ? 'var(--color-primary)' : 'color-mix(in oklch, var(--color-base-content) 65%, transparent)', background: activeTab === tab.id ? 'color-mix(in oklch, var(--color-primary) 12%, transparent)' : 'transparent' }}
                   >
                     <Icon className="w-4 h-4" />
                     <span>{tab.name}</span>
@@ -215,20 +213,22 @@ export default function AssignmentsPage() {
         <div className="mb-6">
           <div className="flex items-center space-x-4">
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }} />
               <input
                 type="text"
                 placeholder="Search assignments..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 rounded-lg focus:ring-2"
+                style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent)', background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
               />
             </div>
             <div className="relative">
               <select
                 value={selectedCourse}
                 onChange={(e) => setSelectedCourse(e.target.value)}
-                className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="appearance-none rounded-lg px-4 py-2 pr-8 focus:ring-2 border-abyss"
+                style={{ background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
               >
                 <option value="all">All Courses</option>
                 {courses.map(course => (
@@ -245,16 +245,16 @@ export default function AssignmentsPage() {
           {filteredAssignments.map((assignment) => {
             const TypeIcon = getTypeIcon(assignment.type);
             return (
-              <div key={assignment.id} className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+              <div key={assignment.id} className="rounded-xl p-6 shadow-sm abyss-card border-abyss hover:scale-[1.01] transition-all duration-300">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <TypeIcon className="w-6 h-6 text-blue-600" />
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
+                      <TypeIcon className="w-6 h-6" style={{ color: 'var(--color-primary)' }} />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-1">{assignment.title}</h3>
-                      <p className="text-gray-600 mb-2">{assignment.description}</p>
-                      <div className="flex items-center space-x-4 text-sm text-gray-600">
+                      <h3 className="text-xl font-semibold mb-1" style={{ color: 'var(--color-base-content)' }}>{assignment.title}</h3>
+                      <p className="mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>{assignment.description}</p>
+                      <div className="flex items-center space-x-4 text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                         <div className="flex items-center space-x-1">
                           <BookOpen className="w-4 h-4" />
                           <span>{assignment.course}</span>
@@ -271,72 +271,68 @@ export default function AssignmentsPage() {
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(assignment.status)}`}>
-                      {assignment.status}
-                    </span>
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(assignment.difficulty)}`}>
-                      {assignment.difficulty}
-                    </span>
-                    <button className="p-1 text-gray-400 hover:text-gray-600">
+                    <span className="px-2 py-1 rounded-full text-xs font-medium border-abyss" style={{ color: 'var(--color-success)', background: 'color-mix(in oklch, var(--color-success) 15%, transparent)' }}>{assignment.status}</span>
+                    <span className="px-2 py-1 rounded-full text-xs font-medium border-abyss" style={{ color: 'var(--color-warning)', background: 'color-mix(in oklch, var(--color-warning) 15%, transparent)' }}>{assignment.difficulty}</span>
+                    <button className="p-1 border-abyss rounded" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                       <MoreVertical className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-                  <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-gray-900">{assignment.totalPoints}</div>
-                    <div className="text-sm text-gray-600">Total Points</div>
+                  <div className="text-center p-4 rounded-lg border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 20%, transparent)' }}>
+                    <div className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>{assignment.totalPoints}</div>
+                    <div className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Total Points</div>
                   </div>
-                  <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-gray-900">{assignment.submissions}</div>
-                    <div className="text-sm text-gray-600">Submissions</div>
+                  <div className="text-center p-4 rounded-lg border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 20%, transparent)' }}>
+                    <div className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>{assignment.submissions}</div>
+                    <div className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Submissions</div>
                   </div>
-                  <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-gray-900">{assignment.totalStudents}</div>
-                    <div className="text-sm text-gray-600">Total Students</div>
+                  <div className="text-center p-4 rounded-lg border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 20%, transparent)' }}>
+                    <div className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>{assignment.totalStudents}</div>
+                    <div className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Total Students</div>
                   </div>
-                  <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <div className="text-2xl font-bold text-gray-900">
+                  <div className="text-center p-4 rounded-lg border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 20%, transparent)' }}>
+                    <div className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>
                       {assignment.averageScore > 0 ? `${assignment.averageScore}%` : 'N/A'}
                     </div>
-                    <div className="text-sm text-gray-600">Average Score</div>
+                    <div className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Average Score</div>
                   </div>
                 </div>
 
                 <div className="mb-6">
-                  <div className="flex items-center justify-between text-sm mb-2">
-                    <span className="text-gray-600">Submission Progress</span>
+                  <div className="flex items-center justify-between text-sm mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
+                    <span>Submission Progress</span>
                     <span className="font-medium">{assignment.submissions}/{assignment.totalStudents}</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="w-full rounded-full h-2 border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
                     <div 
-                      className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-                      style={{ width: `${(assignment.submissions / assignment.totalStudents) * 100}%` }}
+                      className="h-2 rounded-full transition-all duration-300"
+                      style={{ width: `${(assignment.submissions / assignment.totalStudents) * 100}%`, background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}
                     ></div>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
                   <div className="flex items-center space-x-3">
-                    <button className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                    <button className="flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors btn-abyss" style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))', color: 'var(--color-accent-content)' }}>
                       <Eye className="w-4 h-4" />
                       <span>View Submissions</span>
                     </button>
-                    <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                    <button className="flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors btn-abyss-outline">
                       <Edit className="w-4 h-4" />
                       <span>Edit</span>
                     </button>
-                    <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                    <button className="flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors btn-abyss-outline">
                       <MessageSquare className="w-4 h-4" />
                       <span>Announce</span>
                     </button>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                    <button className="p-2 rounded-lg transition-colors border-abyss" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                       <Download className="w-4 h-4" />
                     </button>
-                    <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                    <button className="p-2 rounded-lg transition-colors border-abyss" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
@@ -349,12 +345,12 @@ export default function AssignmentsPage() {
         {/* Create Assignment Modal */}
         {showCreateAssignmentModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] flex flex-col">
-              <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                <h2 className="text-xl font-semibold text-gray-900">Create Assignment</h2>
+            <div className="rounded-xl max-w-2xl w-full max-h-[90vh] flex flex-col abyss-card border-abyss">
+              <div className="flex items-center justify-between p-6" style={{ borderBottom: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
+                <h2 className="text-xl font-semibold" style={{ color: 'var(--color-base-content)' }}>Create Assignment</h2>
                 <button 
                   onClick={() => setShowCreateAssignmentModal(false)}
-                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+                  className="p-2 rounded-lg transition-colors" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -363,27 +359,29 @@ export default function AssignmentsPage() {
               <div className="flex-1 overflow-y-auto p-6">
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Assignment Title</label>
+                    <label className="block text-sm font-medium mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Assignment Title</label>
                     <input
                       type="text"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-3 py-2 rounded-lg focus:ring-2"
+                      style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent)', background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
                       placeholder="Enter assignment title"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                    <label className="block text-sm font-medium mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Description</label>
                     <textarea
                       rows={3}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                      className="w-full px-3 py-2 rounded-lg focus:ring-2 resize-none"
+                      style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent)', background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
                       placeholder="Enter assignment description"
                     />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Course</label>
-                      <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                      <label className="block text-sm font-medium mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Course</label>
+                      <select className="w-full px-3 py-2 rounded-lg focus:ring-2 border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}>
                         {courses.map(course => (
                           <option key={course} value={course}>{course}</option>
                         ))}
@@ -391,8 +389,8 @@ export default function AssignmentsPage() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Assignment Type</label>
-                      <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                      <label className="block text-sm font-medium mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Assignment Type</label>
+                      <select className="w-full px-3 py-2 rounded-lg focus:ring-2 border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}>
                         <option value="coding">Coding Assignment</option>
                         <option value="project">Project</option>
                         <option value="essay">Essay</option>
@@ -403,25 +401,27 @@ export default function AssignmentsPage() {
 
                   <div className="grid grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Due Date</label>
+                      <label className="block text-sm font-medium mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Due Date</label>
                       <input
                         type="date"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 rounded-lg focus:ring-2"
+                        style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent)', background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Total Points</label>
+                      <label className="block text-sm font-medium mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Total Points</label>
                       <input
                         type="number"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 rounded-lg focus:ring-2"
+                        style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent)', background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
                         placeholder="100"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Difficulty</label>
-                      <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                      <label className="block text-sm font-medium mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Difficulty</label>
+                      <select className="w-full px-3 py-2 rounded-lg focus:ring-2 border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}>
                         <option value="easy">Easy</option>
                         <option value="medium">Medium</option>
                         <option value="hard">Hard</option>
@@ -430,33 +430,35 @@ export default function AssignmentsPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Instructions</label>
+                    <label className="block text-sm font-medium mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Instructions</label>
                     <textarea
                       rows={4}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                      className="w-full px-3 py-2 rounded-lg focus:ring-2 resize-none"
+                      style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent)', background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
                       placeholder="Enter detailed instructions for the assignment"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Rubric</label>
+                    <label className="block text-sm font-medium mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Rubric</label>
                     <textarea
                       rows={3}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                      className="w-full px-3 py-2 rounded-lg focus:ring-2 resize-none"
+                      style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent)', background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
                       placeholder="Enter grading rubric"
                     />
                   </div>
                 </div>
               </div>
               
-              <div className="flex items-center justify-end space-x-3 p-6 border-t border-gray-200">
+              <div className="flex items-center justify-end space-x-3 p-6" style={{ borderTop: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
                 <button 
                   onClick={() => setShowCreateAssignmentModal(false)}
-                  className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="px-4 py-2 rounded-lg transition-colors btn-abyss-outline"
                 >
                   Cancel
                 </button>
-                <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                <button className="px-4 py-2 rounded-lg transition-colors btn-abyss" style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))', color: 'var(--color-accent-content)' }}>
                   Create Assignment
                 </button>
               </div>
