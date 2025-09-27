@@ -1,8 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Abyss Theme */
+  --background: oklch(10% 0.08 209);
+  --foreground: oklch(90% 0.076 70.697);
+
+  --color-base-100: oklch(20% 0.08 209);
+  --color-base-200: oklch(15% 0.08 209);
+  --color-base-300: oklch(10% 0.08 209);
+  --color-base-content: oklch(90% 0.076 70.697);
+
+  --color-primary: oklch(92% 0.2653 125);
+  --color-primary-content: oklch(50% 0.2653 125);
+  --color-secondary: oklch(83.27% 0.0764 298.3);
+  --color-secondary-content: oklch(43.27% 0.0764 298.3);
+  --color-accent: oklch(43% 0 0);
+  --color-accent-content: oklch(98% 0 0);
+  --color-neutral: oklch(30% 0.08 209);
+  --color-neutral-content: oklch(90% 0.076 70.697);
+  --color-info: oklch(74% 0.16 232.661);
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: oklch(79% 0.209 151.711);
+  --color-success-content: oklch(26% 0.065 152.934);
+  --color-warning: oklch(84.8% 0.1962 84.62);
+  --color-warning-content: oklch(44.8% 0.1962 84.62);
+  --color-error: oklch(65% 0.1985 24.22);
+  --color-error-content: oklch(27% 0.1985 24.22);
+
+  --radius-selector: 2rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
 }
 
 @theme inline {
@@ -12,15 +44,55 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Force dark Abyss theme regardless of system */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  :root {}
 }
 
 body {
-  background: var(--background);
+  background: radial-gradient(1200px 800px at 20% -10%, color-mix(in oklch, var(--color-base-200) 70%, transparent), transparent),
+              radial-gradient(1200px 800px at 120% 10%, color-mix(in oklch, var(--color-base-300) 60%, transparent), transparent),
+              var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Card glass effect */
+.abyss-card {
+  background: color-mix(in oklch, var(--color-base-100) 70%, transparent);
+  border: 1px solid color-mix(in oklch, var(--color-base-300) 60%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+/* Universal border helpers for buttons/boxes */
+.border-abyss {
+  border: 1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent);
+}
+.btn-abyss {
+  border: 1px solid color-mix(in oklch, var(--color-primary) 35%, transparent);
+}
+.btn-abyss-outline {
+  border: 1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent);
+  background: transparent;
+  color: var(--color-base-content);
+}
+
+/* Flashcard flip animation */
+.flip-card {
+  perspective: 1000px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(.2,.8,.2,1);
+}
+.flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.flip-card-back { transform: rotateY(180deg); }

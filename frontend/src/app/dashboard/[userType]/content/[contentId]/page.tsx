@@ -827,34 +827,34 @@ The AI can help you with:
         {/* Right Panel - AI Interface (60%) */}
         <div className="w-3/5 flex flex-col">
           {/* Header */}
-          <div className="bg-white border-b border-gray-200 p-4">
+          <div className="p-4" style={{ background: 'color-mix(in oklch, var(--color-base-300) 85%, transparent)', borderBottom: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                  <ArrowLeft className="w-5 h-5" />
+                <button className="p-2 rounded-lg transition-colors border-abyss">
+                  <ArrowLeft className="w-5 h-5" style={{ color: 'var(--color-base-content)' }} />
                 </button>
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <ContentIcon className="w-5 h-5 text-blue-600" />
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}>
+                    <ContentIcon className="w-5 h-5" style={{ color: 'var(--color-accent-content)' }} />
                   </div>
                   <div>
-                    <h1 className="text-lg font-semibold text-gray-900">{contentData.title}</h1>
-                    <p className="text-sm text-gray-500">{contentData.type.toUpperCase()} • {contentData.size}</p>
+                    <h1 className="text-lg font-semibold" style={{ color: 'var(--color-base-content)' }}>{contentData.title}</h1>
+                    <p className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 65%, transparent)' }}>{contentData.type.toUpperCase()} • {contentData.size}</p>
                   </div>
                 </div>
               </div>
               
               <div className="flex items-center space-x-2">
-                <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                <button className="p-2 rounded-lg transition-colors border-abyss" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
                   <Star className="w-5 h-5" />
                 </button>
-                <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                <button className="p-2 rounded-lg transition-colors border-abyss" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
                   <Share className="w-5 h-5" />
                 </button>
-                <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                <button className="p-2 rounded-lg transition-colors border-abyss" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
                   <Download className="w-5 h-5" />
                 </button>
-                <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                <button className="p-2 rounded-lg transition-colors border-abyss" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
                   <MoreVertical className="w-5 h-5" />
                 </button>
               </div>
@@ -864,33 +864,24 @@ The AI can help you with:
             <div className="flex items-center space-x-1 mt-4">
               <button
                 onClick={() => setActiveTab('chat')}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  activeTab === 'chat'
-                    ? 'bg-blue-100 text-blue-700'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                }`}
+                className={`px-4 py-2 rounded-lg font-medium transition-colors border-abyss`}
+                style={{ background: activeTab === 'chat' ? 'color-mix(in oklch, var(--color-primary) 15%, transparent)' : 'transparent', color: activeTab === 'chat' ? 'var(--color-primary)' : 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}
               >
                 <MessageSquare className="w-4 h-4 inline mr-2" />
                 AI Chat
               </button>
               <button
                 onClick={() => setActiveTab('knowledge-space')}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  activeTab === 'knowledge-space'
-                    ? 'bg-blue-100 text-blue-700'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                }`}
+                className={`px-4 py-2 rounded-lg font-medium transition-colors border-abyss`}
+                style={{ background: activeTab === 'knowledge-space' ? 'color-mix(in oklch, var(--color-primary) 15%, transparent)' : 'transparent', color: activeTab === 'knowledge-space' ? 'var(--color-primary)' : 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}
               >
                 <BookOpen className="w-4 h-4 inline mr-2" />
                 Knowledge Space
               </button>
               <button
                 onClick={() => setActiveTab('content-generator')}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  activeTab === 'content-generator'
-                    ? 'bg-blue-100 text-blue-700'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                }`}
+                className={`px-4 py-2 rounded-lg font-medium transition-colors border-abyss`}
+                style={{ background: activeTab === 'content-generator' ? 'color-mix(in oklch, var(--color-primary) 15%, transparent)' : 'transparent', color: activeTab === 'content-generator' ? 'var(--color-primary)' : 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}
               >
                 <HelpCircle className="w-4 h-4 inline mr-2" />
                 Content Generator
@@ -909,20 +900,16 @@ The AI can help you with:
                       key={message.id}
                       className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
-                      <div className={`max-w-3xl ${
-                        message.type === 'user'
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-white border border-gray-200'
-                      } rounded-lg p-4`}>
+                      <div className={`max-w-3xl rounded-lg p-4 ${message.type === 'user' ? '' : 'abyss-card border-abyss'}`} style={{ background: message.type === 'user' ? 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' : undefined, color: message.type === 'user' ? 'var(--color-accent-content)' : 'var(--color-base-content)' }}>
                         {message.type === 'ai' && (
                           <div className="flex items-center space-x-2 mb-2">
-                            <Brain className="w-4 h-4 text-blue-600" />
-                            <span className="text-sm font-semibold text-blue-600">AI Assistant</span>
+                            <Brain className="w-4 h-4" style={{ color: 'var(--color-primary)' }} />
+                            <span className="text-sm font-semibold" style={{ color: 'var(--color-primary)' }}>AI Assistant</span>
                           </div>
                         )}
-                        <div className={`text-sm ${message.type === 'user' ? 'text-white' : 'text-gray-900'}`}>
+                        <div className={`text-sm`}>
                           {message.type === 'ai' ? (
-                            <div className="prose prose-sm max-w-none prose-headings:text-gray-900 prose-p:text-gray-900 prose-strong:text-gray-900 prose-ul:text-gray-900 prose-ol:text-gray-900 prose-li:text-gray-900 prose-code:text-gray-900 prose-pre:text-gray-900 prose-blockquote:text-gray-900">
+                            <div className="prose prose-sm max-w-none" style={{ color: 'var(--color-base-content)' }}>
                               <ReactMarkdown remarkPlugins={[remarkGfm]}>
                                 {message.content}
                               </ReactMarkdown>
@@ -931,9 +918,7 @@ The AI can help you with:
                             message.content
                           )}
                         </div>
-                        <div className={`text-xs mt-2 ${
-                          message.type === 'user' ? 'text-blue-100' : 'text-gray-500'
-                        }`}>
+                        <div className={`text-xs mt-2`} style={{ color: message.type === 'user' ? 'color-mix(in oklch, var(--color-accent-content) 80%, transparent)' : 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                           {message.timestamp}
                         </div>
                       </div>
@@ -942,15 +927,15 @@ The AI can help you with:
                   
                   {isGenerating && (
                     <div className="flex justify-start">
-                      <div className="bg-white border border-gray-200 rounded-lg p-4">
+                    <div className="rounded-lg p-4 abyss-card border-abyss">
                         <div className="flex items-center space-x-2">
-                          <Brain className="w-4 h-4 text-blue-600" />
-                          <span className="text-sm font-semibold text-blue-600">AI Assistant</span>
+                        <Brain className="w-4 h-4" style={{ color: 'var(--color-primary)' }} />
+                        <span className="text-sm font-semibold" style={{ color: 'var(--color-primary)' }}>AI Assistant</span>
                         </div>
                         <div className="flex items-center space-x-2 mt-2">
-                          <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></div>
-                          <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                          <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                        <div className="w-2 h-2 rounded-full animate-bounce" style={{ background: 'var(--color-primary)' }}></div>
+                        <div className="w-2 h-2 rounded-full animate-bounce" style={{ background: 'var(--color-primary)', animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 rounded-full animate-bounce" style={{ background: 'var(--color-primary)', animationDelay: '0.2s' }}></div>
                         </div>
                       </div>
                     </div>
