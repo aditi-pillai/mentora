@@ -174,13 +174,24 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div className="mt-6 text-center">
+          <div className="mt-6 text-center space-y-4">
             <p className="text-gray-600">
               Don't have an account?{' '}
               <a href="#" className="text-blue-600 hover:text-blue-500 font-semibold transition-colors">
                 Sign up
               </a>
             </p>
+            
+            <div className="border-t pt-4">
+              <p className="text-sm text-gray-600 mb-3">Are you an educational institution?</p>
+              <Link 
+                href="/institute-register" 
+                className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-700 hover:to-blue-700 transition-colors font-medium"
+              >
+                <Building2 className="w-4 h-4" />
+                <span>Register Institute</span>
+              </Link>
+            </div>
           </div>
         </div>
 

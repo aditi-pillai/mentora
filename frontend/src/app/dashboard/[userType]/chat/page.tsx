@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -150,7 +150,7 @@ This tutorial is perfect for beginners and includes practical exercises througho
   ];
 
   // Initialize with dummy files
-  React.useEffect(() => {
+  useEffect(() => {
     setUploadedFiles(dummyFiles);
   }, []);
 

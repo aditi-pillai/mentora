@@ -36,12 +36,12 @@ export default function Sidebar({ userType }: SidebarProps) {
     const baseItems = [
       { name: 'AI Chat', href: `/dashboard/${userType}/chat`, icon: MessageSquare },
       { name: 'Content Library', href: `/dashboard/${userType}/content`, icon: BookOpen },
-      { name: 'Upload Content', href: `/dashboard/${userType}/upload`, icon: Upload },
     ];
 
     if (userType === 'student') {
       return [
         ...baseItems,
+        { name: 'Courses', href: `/dashboard/${userType}/courses`, icon: BookOpen },
         { name: 'Study Guides', href: `/dashboard/${userType}/guides`, icon: FileText },
         { name: 'Quizzes', href: `/dashboard/${userType}/quizzes`, icon: HelpCircle },
         { name: 'Study Groups', href: `/dashboard/${userType}/groups`, icon: Users },
@@ -52,6 +52,7 @@ export default function Sidebar({ userType }: SidebarProps) {
     } else if (userType === 'teacher') {
       return [
         ...baseItems,
+        { name: 'My Courses', href: `/dashboard/${userType}/courses`, icon: BookOpen },
         { name: 'Quizzes', href: `/dashboard/${userType}/quizzes`, icon: HelpCircle },
         { name: 'Quiz Generator', href: `/dashboard/${userType}/quiz-generator`, icon: Brain },
         { name: 'Students', href: `/dashboard/${userType}/students`, icon: User },
@@ -169,7 +170,7 @@ export default function Sidebar({ userType }: SidebarProps) {
           href={`/dashboard/${userType}/settings`}
           className={`flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors ${
             isCollapsed ? 'justify-center' : ''
-          }`}
+          } ${pathname === `/dashboard/${userType}/settings` ? 'bg-blue-50 text-blue-700 border-r-2 border-blue-700' : ''}`}
           title={isCollapsed ? 'Settings' : undefined}
         >
           <Settings className={`w-5 h-5 ${isCollapsed ? '' : 'mr-3'}`} />
