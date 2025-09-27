@@ -138,12 +138,13 @@ export default function TeacherQuizzesPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Quiz Management</h1>
-            <p className="text-gray-600">Create, manage, and track your quiz performance</p>
+            <h1 className="text-3xl font-bold mb-2" style={{ color: 'var(--color-base-content)' }}>Quiz Management</h1>
+            <p style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Create, manage, and track your quiz performance</p>
           </div>
           <button
             onClick={() => setShowCreateModal(true)}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-200 flex items-center space-x-2"
+            className="px-6 py-3 rounded-lg transition-all duration-200 flex items-center space-x-2 btn-abyss"
+            style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))', color: 'var(--color-accent-content)' }}
           >
             <Plus className="w-5 h-5" />
             <span>Generate New Quiz</span>
@@ -152,80 +153,82 @@ export default function TeacherQuizzesPage() {
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="rounded-xl p-6 abyss-card border-abyss">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Total Quizzes</p>
-                <p className="text-2xl font-bold text-gray-900">{quizzes.length}</p>
+                <p className="text-sm font-medium" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Total Quizzes</p>
+                <p className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>{quizzes.length}</p>
               </div>
-              <div className="p-3 bg-blue-100 rounded-lg">
-                <HelpCircle className="w-6 h-6 text-blue-600" />
+              <div className="p-3 rounded-lg border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
+                <HelpCircle className="w-6 h-6" style={{ color: 'var(--color-primary)' }} />
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="rounded-xl p-6 abyss-card border-abyss">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Published</p>
-                <p className="text-2xl font-bold text-gray-900">{quizzes.filter(q => q.status === 'published').length}</p>
+                <p className="text-sm font-medium" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Published</p>
+                <p className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>{quizzes.filter(q => q.status === 'published').length}</p>
               </div>
-              <div className="p-3 bg-green-100 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-green-600" />
+              <div className="p-3 rounded-lg border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
+                <CheckCircle className="w-6 h-6" style={{ color: 'var(--color-success)' }} />
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="rounded-xl p-6 abyss-card border-abyss">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Total Attempts</p>
-                <p className="text-2xl font-bold text-gray-900">{quizzes.reduce((sum, q) => sum + q.attempts, 0)}</p>
+                <p className="text-sm font-medium" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Total Attempts</p>
+                <p className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>{quizzes.reduce((sum, q) => sum + q.attempts, 0)}</p>
               </div>
-              <div className="p-3 bg-purple-100 rounded-lg">
-                <Users className="w-6 h-6 text-purple-600" />
+              <div className="p-3 rounded-lg border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
+                <Users className="w-6 h-6" style={{ color: 'var(--color-secondary)' }} />
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="rounded-xl p-6 abyss-card border-abyss">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Avg Score</p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="text-sm font-medium" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Avg Score</p>
+                <p className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>
                   {Math.round(quizzes.filter(q => q.attempts > 0).reduce((sum, q) => sum + q.avgScore, 0) / quizzes.filter(q => q.attempts > 0).length) || 0}%
                 </p>
               </div>
-              <div className="p-3 bg-orange-100 rounded-lg">
-                <Target className="w-6 h-6 text-orange-600" />
+              <div className="p-3 rounded-lg border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
+                <Target className="w-6 h-6" style={{ color: 'var(--color-warning)' }} />
               </div>
             </div>
           </div>
         </div>
 
         {/* Search and Filters */}
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 mb-6">
+        <div className="rounded-xl p-6 abyss-card border-abyss mb-6">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             <div className="flex-1 max-w-md">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }} />
                 <input
                   type="text"
                   placeholder="Search quizzes..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-2 rounded-lg focus:ring-2"
+                  style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent)', background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
                 />
               </div>
             </div>
 
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <Filter className="w-5 h-5 text-gray-400" />
+                <Filter className="w-5 h-5" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }} />
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="rounded-lg px-3 py-2 focus:ring-2 border-abyss"
+                  style={{ background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
                 >
                   {categories.map(category => (
                     <option key={category.id} value={category.id}>
@@ -239,76 +242,76 @@ export default function TeacherQuizzesPage() {
         </div>
 
         {/* Quizzes Table */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200">
-          <div className="p-6 border-b border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900">Your Quizzes</h2>
+        <div className="rounded-xl shadow-sm abyss-card border-abyss">
+          <div className="p-6" style={{ borderBottom: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
+            <h2 className="text-xl font-semibold" style={{ color: 'var(--color-base-content)' }}>Your Quizzes</h2>
           </div>
           
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50">
+              <thead style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quiz</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Course</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Performance</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Used</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>Quiz</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>Course</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>Status</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>Performance</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>Last Used</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>Actions</th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="divide-y" style={{ background: 'transparent', borderColor: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
                 {filteredQuizzes.map(quiz => (
-                  <tr key={quiz.id} className="hover:bg-gray-50">
+                  <tr key={quiz.id} className="transition-colors" style={{ background: 'transparent' }}>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center space-x-3">
                         <div className="flex-shrink-0">
-                          <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                            <HelpCircle className="w-5 h-5 text-blue-600" />
+                          <div className="w-10 h-10 rounded-lg flex items-center justify-center border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
+                            <HelpCircle className="w-5 h-5" style={{ color: 'var(--color-primary)' }} />
                           </div>
                         </div>
                         <div>
-                          <div className="text-sm font-medium text-gray-900 flex items-center space-x-2">
+                          <div className="text-sm font-medium flex items-center space-x-2" style={{ color: 'var(--color-base-content)' }}>
                             <span>{quiz.title}</span>
                             {quiz.isStarred && <span className="text-yellow-500">★</span>}
                           </div>
-                          <div className="text-sm text-gray-500">{quiz.description}</div>
+                          <div className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 65%, transparent)' }}>{quiz.description}</div>
                           <div className="flex items-center space-x-2 mt-1">
-                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(quiz.difficulty)}`}>
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium border-abyss`} style={{ color: 'var(--color-warning)', background: 'color-mix(in oklch, var(--color-warning) 15%, transparent)' }}>
                               {quiz.difficulty}
                             </span>
-                            <span className="text-xs text-gray-500">{quiz.questions} questions • {quiz.duration}</span>
+                            <span className="text-xs" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>{quiz.questions} questions • {quiz.duration}</span>
                           </div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{quiz.course}</div>
-                      <div className="text-sm text-gray-500">{quiz.createdAt}</div>
+                      <div className="text-sm" style={{ color: 'var(--color-base-content)' }}>{quiz.course}</div>
+                      <div className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>{quiz.createdAt}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(quiz.status)}`}>
+                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border-abyss`} style={{ color: 'var(--color-success)', background: 'color-mix(in oklch, var(--color-success) 15%, transparent)' }}>
                         {quiz.status}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{quiz.attempts} attempts</div>
-                      <div className="text-sm text-gray-500">Avg: {quiz.avgScore}%</div>
+                      <div className="text-sm" style={{ color: 'var(--color-base-content)' }}>{quiz.attempts} attempts</div>
+                      <div className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>Avg: {quiz.avgScore}%</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{quiz.lastUsed || 'Never'}</div>
+                      <div className="text-sm" style={{ color: 'var(--color-base-content)' }}>{quiz.lastUsed || 'Never'}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <div className="flex items-center space-x-2">
-                        <button className="text-blue-600 hover:text-blue-900 p-1" title="View">
+                        <button className="p-1 border-abyss rounded" title="View" style={{ color: 'var(--color-primary)' }}>
                           <Eye className="w-4 h-4" />
                         </button>
-                        <button className="text-gray-600 hover:text-gray-900 p-1" title="Edit">
+                        <button className="p-1 border-abyss rounded" title="Edit" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                           <Edit className="w-4 h-4" />
                         </button>
-                        <button className="text-green-600 hover:text-green-900 p-1" title="Share">
+                        <button className="p-1 border-abyss rounded" title="Share" style={{ color: 'var(--color-success)' }}>
                           <Share className="w-4 h-4" />
                         </button>
-                        <button className="text-gray-600 hover:text-gray-900 p-1" title="More">
+                        <button className="p-1 border-abyss rounded" title="More" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                           <MoreVertical className="w-4 h-4" />
                         </button>
                       </div>
@@ -323,37 +326,37 @@ export default function TeacherQuizzesPage() {
         {/* Create Quiz Modal */}
         {showCreateModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-xl p-6 w-full max-w-md mx-4">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Generate New Quiz</h3>
+            <div className="rounded-xl p-6 w-full max-w-md mx-4 abyss-card border-abyss">
+              <h3 className="text-lg font-semibold mb-4" style={{ color: 'var(--color-base-content)' }}>Generate New Quiz</h3>
               
               <div className="space-y-4">
-                <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4">
+                <div className="rounded-lg p-4 border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 25%, transparent)' }}>
                   <div className="flex items-center space-x-3">
-                    <Brain className="w-8 h-8 text-blue-600" />
+                    <Brain className="w-8 h-8" style={{ color: 'var(--color-primary)' }} />
                     <div>
-                      <h4 className="font-semibold text-gray-900">AI Quiz Generation</h4>
-                      <p className="text-sm text-gray-600">Generate quizzes from your uploaded content</p>
+                      <h4 className="font-semibold" style={{ color: 'var(--color-base-content)' }}>AI Quiz Generation</h4>
+                      <p className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Generate quizzes from your uploaded content</p>
                     </div>
                   </div>
                 </div>
                 
                 <div className="space-y-3">
-                  <button className="w-full p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500 transition-colors text-left">
+                  <button className="w-full p-4 border-2 border-dashed rounded-lg transition-colors text-left border-abyss">
                     <div className="flex items-center space-x-3">
-                      <BookOpen className="w-6 h-6 text-blue-600" />
+                      <BookOpen className="w-6 h-6" style={{ color: 'var(--color-primary)' }} />
                       <div>
-                        <div className="font-medium text-gray-900">From Content Library</div>
-                        <div className="text-sm text-gray-500">Select from your uploaded materials</div>
+                        <div className="font-medium" style={{ color: 'var(--color-base-content)' }}>From Content Library</div>
+                        <div className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 65%, transparent)' }}>Select from your uploaded materials</div>
                       </div>
                     </div>
                   </button>
                   
-                  <button className="w-full p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500 transition-colors text-left">
+                  <button className="w-full p-4 border-2 border-dashed rounded-lg transition-colors text-left border-abyss">
                     <div className="flex items-center space-x-3">
-                      <HelpCircle className="w-6 h-6 text-green-600" />
+                      <HelpCircle className="w-6 h-6" style={{ color: 'var(--color-success)' }} />
                       <div>
-                        <div className="font-medium text-gray-900">Manual Creation</div>
-                        <div className="text-sm text-gray-500">Create questions manually</div>
+                        <div className="font-medium" style={{ color: 'var(--color-base-content)' }}>Manual Creation</div>
+                        <div className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 65%, transparent)' }}>Create questions manually</div>
                       </div>
                     </div>
                   </button>
@@ -363,7 +366,7 @@ export default function TeacherQuizzesPage() {
               <div className="flex items-center justify-end space-x-3 mt-6">
                 <button
                   onClick={() => setShowCreateModal(false)}
-                  className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="px-4 py-2 rounded-lg transition-colors btn-abyss-outline"
                 >
                   Cancel
                 </button>

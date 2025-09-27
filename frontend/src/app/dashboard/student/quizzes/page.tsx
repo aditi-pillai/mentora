@@ -255,75 +255,75 @@ export default function QuizzesPage() {
       <div className="p-6">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Practice Quizzes</h1>
-          <p className="text-gray-600">Test your knowledge and track your progress</p>
+          <h1 className="text-3xl font-bold mb-2" style={{ color: 'var(--color-base-content)' }}>Practice Quizzes</h1>
+          <p style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Test your knowledge and track your progress</p>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="rounded-xl p-6 abyss-card">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Total Quizzes</p>
-                <p className="text-2xl font-bold text-gray-900">12</p>
+                <p className="text-sm font-medium" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Total Quizzes</p>
+                <p className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>12</p>
               </div>
-              <div className="p-3 bg-blue-100 rounded-lg">
-                <HelpCircle className="w-6 h-6 text-blue-600" />
+              <div className="p-3 rounded-lg" style={{ background: 'color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
+                <HelpCircle className="w-6 h-6" style={{ color: 'var(--color-primary)' }} />
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="rounded-xl p-6 abyss-card">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Completed</p>
-                <p className="text-2xl font-bold text-gray-900">3</p>
+                <p className="text-sm font-medium" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Completed</p>
+                <p className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>3</p>
               </div>
-              <div className="p-3 bg-green-100 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-green-600" />
+              <div className="p-3 rounded-lg" style={{ background: 'color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
+                <CheckCircle className="w-6 h-6" style={{ color: 'var(--color-success)' }} />
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="rounded-xl p-6 abyss-card">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Average Score</p>
-                <p className="text-2xl font-bold text-gray-900">85%</p>
+                <p className="text-sm font-medium" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Average Score</p>
+                <p className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>85%</p>
               </div>
-              <div className="p-3 bg-purple-100 rounded-lg">
-                <TrendingUp className="w-6 h-6 text-purple-600" />
+              <div className="p-3 rounded-lg" style={{ background: 'color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
+                <TrendingUp className="w-6 h-6" style={{ color: 'var(--color-secondary)' }} />
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="rounded-xl p-6 abyss-card">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Study Time</p>
-                <p className="text-2xl font-bold text-gray-900">2.5h</p>
+                <p className="text-sm font-medium" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Study Time</p>
+                <p className="text-2xl font-bold" style={{ color: 'var(--color-base-content)' }}>2.5h</p>
               </div>
-              <div className="p-3 bg-orange-100 rounded-lg">
-                <Clock className="w-6 h-6 text-orange-600" />
+              <div className="p-3 rounded-lg" style={{ background: 'color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
+                <Clock className="w-6 h-6" style={{ color: 'var(--color-warning)' }} />
               </div>
             </div>
           </div>
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 mb-6">
+        <div className="rounded-xl p-6 abyss-card mb-6">
           <div className="flex items-center space-x-4">
-            <Filter className="w-5 h-5 text-gray-400" />
+            <Filter className="w-5 h-5" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }} />
             <div className="flex flex-wrap gap-2">
               {categories.map(category => (
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                    selectedCategory === category.id
-                      ? 'bg-blue-100 text-blue-700'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  }`}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors`}
+                  style={{
+                    background: selectedCategory === category.id ? 'color-mix(in oklch, var(--color-primary) 20%, transparent)' : 'color-mix(in oklch, var(--color-base-100) 25%, transparent)',
+                    color: selectedCategory === category.id ? 'var(--color-primary-content)' : 'color-mix(in oklch, var(--color-base-content) 75%, transparent)'
+                  }}
                 >
                   {category.label} ({category.count})
                 </button>
@@ -335,11 +335,11 @@ export default function QuizzesPage() {
         {/* Quiz Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredQuizzes.map(quiz => (
-            <div key={quiz.id} className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+            <div key={quiz.id} className="rounded-xl p-6 abyss-card hover:scale-[1.02] transition-all duration-300">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center space-x-2">
-                  <div className="p-2 bg-blue-100 rounded-lg">
-                    <HelpCircle className="w-5 h-5 text-blue-600" />
+                  <div className="p-2 rounded-lg" style={{ background: 'color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
+                    <HelpCircle className="w-5 h-5" style={{ color: 'var(--color-primary)' }} />
                   </div>
                   <div>
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(quiz.difficulty)}`}>
@@ -347,15 +347,15 @@ export default function QuizzesPage() {
                     </span>
                   </div>
                 </div>
-                <button className="p-1 hover:bg-gray-100 rounded">
-                  <Star className={`w-4 h-4 ${quiz.isStarred ? 'text-yellow-500 fill-current' : 'text-gray-400'}`} />
+                <button className="p-1 rounded" style={{ background: 'transparent' }}>
+                  <Star className={`w-4 h-4 ${quiz.isStarred ? 'text-yellow-500 fill-current' : ''}`} style={{ color: quiz.isStarred ? 'var(--color-warning)' : 'color-mix(in oklch, var(--color-base-content) 50%, transparent)' }} />
                 </button>
               </div>
 
-              <h3 className="font-semibold text-gray-900 mb-2">{quiz.title}</h3>
-              <p className="text-sm text-gray-600 mb-4">{quiz.description}</p>
+              <h3 className="font-semibold mb-2" style={{ color: 'var(--color-base-content)' }}>{quiz.title}</h3>
+              <p className="text-sm mb-4" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>{quiz.description}</p>
 
-              <div className="flex items-center space-x-4 text-sm text-gray-500 mb-4">
+              <div className="flex items-center space-x-4 text-sm mb-4" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                 <span className="flex items-center space-x-1">
                   <HelpCircle className="w-4 h-4" />
                   <span>{quiz.questionCount} questions</span>
@@ -376,12 +376,13 @@ export default function QuizzesPage() {
               )}
 
               <div className="flex items-center justify-between">
-                <div className="text-sm text-gray-500">
+                <div className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                   {quiz.attempts > 0 ? `${quiz.attempts} attempts` : 'Not attempted'}
                 </div>
                 <button
                   onClick={() => startQuiz(quiz)}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
+                  className="px-4 py-2 rounded-lg transition-colors flex items-center space-x-2"
+                  style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))', color: 'var(--color-accent-content)' }}
                 >
                   <Play className="w-4 h-4" />
                   <span>{quiz.isCompleted ? 'Retake' : 'Start Quiz'}</span>

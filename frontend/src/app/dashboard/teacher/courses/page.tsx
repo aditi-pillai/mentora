@@ -268,8 +268,8 @@ export default function TeacherCoursesPage() {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">My Courses</h1>
-              <p className="text-gray-600 mt-2">
+              <h1 className="text-3xl font-bold" style={{ color: 'var(--color-base-content)' }}>My Courses</h1>
+              <p className="mt-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
                 {connectedInstitute 
                   ? `Teaching at ${connectedInstitute.name}` 
                   : 'Connect to an institute to create courses'
@@ -280,7 +280,8 @@ export default function TeacherCoursesPage() {
               <button 
                 onClick={() => setShowCreateCourseModal(true)}
                 disabled={!connectedInstitute}
-                className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed btn-abyss"
+                style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))', color: 'var(--color-accent-content)' }}
               >
                 <Plus className="w-4 h-4" />
                 <span>Create Course</span>
@@ -290,21 +291,21 @@ export default function TeacherCoursesPage() {
 
           {/* Connected Institute Info */}
           {connectedInstitute && (
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200 mb-6">
+            <div className="rounded-xl p-6 mb-6 abyss-card border-abyss">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <Building2 className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}>
+                    <Building2 className="w-6 h-6" style={{ color: 'var(--color-accent-content)' }} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">{connectedInstitute.name}</h3>
-                    <p className="text-sm text-gray-600">{connectedInstitute.location}</p>
-                    <p className="text-xs text-gray-500">{connectedInstitute.type}</p>
+                    <h3 className="font-semibold" style={{ color: 'var(--color-base-content)' }}>{connectedInstitute.name}</h3>
+                    <p className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>{connectedInstitute.location}</p>
+                    <p className="text-xs" style={{ color: 'color-mix(in oklch, var(--color-base-content) 55%, transparent)' }}>{connectedInstitute.type}</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-medium text-gray-900">{connectedInstitute.students?.toLocaleString() || '0'} Students</p>
-                  <p className="text-sm text-gray-600">{connectedInstitute.teachers?.toLocaleString() || '0'} Teachers</p>
+                  <p className="text-sm font-medium" style={{ color: 'var(--color-base-content)' }}>{connectedInstitute.students?.toLocaleString() || '0'} Students</p>
+                  <p className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>{connectedInstitute.teachers?.toLocaleString() || '0'} Teachers</p>
                 </div>
               </div>
             </div>
@@ -331,7 +332,7 @@ export default function TeacherCoursesPage() {
           )}
 
           {/* Tab Navigation */}
-          <div className="border-b border-gray-200">
+          <div className="" style={{ borderBottom: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
             <nav className="-mb-px flex space-x-8">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
@@ -339,11 +340,8 @@ export default function TeacherCoursesPage() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
-                      activeTab === tab.id
-                        ? 'border-blue-500 text-blue-600'
-                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                    }`}
+                    className={`flex items-center space-x-2 py-3 px-3 font-medium text-sm transition-colors border-abyss rounded-t-lg`}
+                    style={{ color: activeTab === tab.id ? 'var(--color-primary)' : 'color-mix(in oklch, var(--color-base-content) 65%, transparent)', background: activeTab === tab.id ? 'color-mix(in oklch, var(--color-primary) 12%, transparent)' : 'transparent' }}
                   >
                     <Icon className="w-4 h-4" />
                     <span>{tab.name}</span>
@@ -372,48 +370,44 @@ export default function TeacherCoursesPage() {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {teacherCourses.map((course) => (
-                  <div key={course.id} className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+                  <div key={course.id} className="rounded-xl p-6 abyss-card border-abyss hover:scale-[1.01] transition-all duration-300">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-start space-x-3">
                         <div className="text-3xl">{course.thumbnail}</div>
                         <div className="flex-1">
-                          <h3 className="font-semibold text-gray-900 mb-1">{course.title}</h3>
-                          <p className="text-sm text-gray-600 mb-2">{course.description}</p>
-                          <p className="text-xs text-blue-600">{course.institute}</p>
+                          <h3 className="font-semibold mb-1" style={{ color: 'var(--color-base-content)' }}>{course.title}</h3>
+                          <p className="text-sm mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>{course.description}</p>
+                          <p className="text-xs" style={{ color: 'var(--color-primary)' }}>{course.institute}</p>
                         </div>
                       </div>
-                      <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                      <button className="p-2 rounded-lg transition-colors border-abyss" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                         <MoreVertical className="w-4 h-4" />
                       </button>
                     </div>
 
                     <div className="space-y-3 mb-4">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600">Students:</span>
+                      <div className="flex items-center justify-between text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
+                        <span>Students:</span>
                         <span className="font-medium">{course.students}</span>
                       </div>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600">Assignments:</span>
+                      <div className="flex items-center justify-between text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
+                        <span>Assignments:</span>
                         <span className="font-medium">{course.assignments}</span>
                       </div>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600">AI Content:</span>
+                      <div className="flex items-center justify-between text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
+                        <span>AI Content:</span>
                         <span className="font-medium">
                           {course.aiContent.studyGuides + course.aiContent.quizzes + course.aiContent.presentations + course.aiContent.mindMaps} items
                         </span>
                       </div>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600">Last Activity:</span>
+                      <div className="flex items-center justify-between text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
+                        <span>Last Activity:</span>
                         <span className="font-medium">{course.lastActivity}</span>
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                        course.status === 'active' 
-                          ? 'bg-green-100 text-green-800' 
-                          : 'bg-yellow-100 text-yellow-800'
-                      }`}>
+                    <div className="flex items-center justify-between pt-4" style={{ borderTop: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
+                      <span className="px-2 py-1 rounded-full text-xs font-medium border-abyss" style={{ color: 'var(--color-success)', background: 'color-mix(in oklch, var(--color-success) 15%, transparent)' }}>
                         {course.status}
                       </span>
                       <div className="flex items-center space-x-2">
@@ -422,15 +416,16 @@ export default function TeacherCoursesPage() {
                             setSelectedCourse(course);
                             setShowShareContentModal(true);
                           }}
-                          className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" 
+                          className="p-2 rounded-lg transition-colors border-abyss" 
+                          style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}
                           title="Share AI Content"
                         >
                           <Share className="w-4 h-4" />
                         </button>
-                        <button className="p-2 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors" title="View">
+                        <button className="p-2 rounded-lg transition-colors border-abyss" title="View" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                           <Eye className="w-4 h-4" />
                         </button>
-                        <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors" title="Edit">
+                        <button className="p-2 rounded-lg transition-colors border-abyss" title="Edit" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                           <Edit className="w-4 h-4" />
                         </button>
                       </div>

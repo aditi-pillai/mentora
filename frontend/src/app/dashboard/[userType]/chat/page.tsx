@@ -260,23 +260,25 @@ What would you like to explore today? You can upload materials, ask questions, o
         {/* Main Chat Area */}
         <div className="flex-1 flex flex-col">
           {/* Chat Header */}
-          <div className="p-4 border-b border-gray-200 bg-white">
+          <div className="p-4" style={{ background: 'color-mix(in oklch, var(--color-base-300) 85%, transparent)', borderBottom: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-xl font-semibold text-gray-900">AI Chat Assistant</h1>
-                <p className="text-sm text-gray-500">Ask me anything or upload content to get started</p>
+                <h1 className="text-xl font-semibold" style={{ color: 'var(--color-base-content)' }}>AI Chat Assistant</h1>
+                <p className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Ask me anything or upload content to get started</p>
               </div>
               <div className="flex items-center space-x-3">
                 <button
                   onClick={() => setShowUploadModal(true)}
-                  className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  className="flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors btn-abyss"
+                  style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))', color: 'var(--color-accent-content)' }}
                 >
                   <Upload className="w-4 h-4" />
                   <span>Upload</span>
                 </button>
                 <button
                   onClick={() => window.open('/dashboard/' + userType + '/content', '_blank')}
-                  className="flex items-center space-x-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors btn-abyss-outline"
+                  style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)', color: 'var(--color-base-content)' }}
                 >
                   <FileText className="w-4 h-4" />
                   <span>Content Library</span>
@@ -290,14 +292,14 @@ What would you like to explore today? You can upload materials, ask questions, o
             <div className="flex-1 flex items-center justify-center p-8">
               <div className="max-w-2xl mx-auto text-center">
                 {/* Logo */}
-                <div className="w-24 h-24 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Brain className="w-12 h-12 text-white" />
+                <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6" style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}>
+                  <Brain className="w-12 h-12" style={{ color: 'var(--color-accent-content)' }} />
                 </div>
                 
-                <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                <h1 className="text-3xl font-bold mb-4" style={{ color: 'var(--color-base-content)' }}>
                   Welcome to Mentora AI
                 </h1>
-                <p className="text-xl text-gray-600 mb-8">
+                <p className="text-xl mb-8" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
                   Your intelligent learning companion. Ask questions, upload materials, and enhance your learning experience.
                 </p>
 
@@ -305,27 +307,30 @@ What would you like to explore today? You can upload materials, ask questions, o
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                   <button 
                     onClick={() => setShowUploadModal(true)}
-                    className="p-6 border-2 border-dashed border-gray-300 rounded-xl hover:border-blue-500 transition-colors cursor-pointer"
+                    className="p-6 rounded-xl transition-colors cursor-pointer abyss-card border-abyss"
+                    style={{ border: '2px dashed color-mix(in oklch, var(--color-base-100) 35%, transparent)' }}
                   >
-                    <FileText className="w-8 h-8 text-blue-600 mx-auto mb-3" />
-                    <h3 className="font-semibold text-gray-900 mb-2">Upload Files</h3>
-                    <p className="text-sm text-gray-600">PDF, DOCX, PPTX, Images</p>
+                    <FileText className="w-8 h-8 mx-auto mb-3" style={{ color: 'var(--color-primary)' }} />
+                    <h3 className="font-semibold mb-2" style={{ color: 'var(--color-base-content)' }}>Upload Files</h3>
+                    <p className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 65%, transparent)' }}>PDF, DOCX, PPTX, Images</p>
                   </button>
                   <button 
                     onClick={() => setShowUploadModal(true)}
-                    className="p-6 border-2 border-dashed border-gray-300 rounded-xl hover:border-blue-500 transition-colors cursor-pointer"
+                    className="p-6 rounded-xl transition-colors cursor-pointer abyss-card border-abyss"
+                    style={{ border: '2px dashed color-mix(in oklch, var(--color-base-100) 35%, transparent)' }}
                   >
-                    <Video className="w-8 h-8 text-red-600 mx-auto mb-3" />
-                    <h3 className="font-semibold text-gray-900 mb-2">YouTube Links</h3>
-                    <p className="text-sm text-gray-600">Lecture or video links</p>
+                    <Video className="w-8 h-8 mx-auto mb-3" style={{ color: 'var(--color-error)' }} />
+                    <h3 className="font-semibold mb-2" style={{ color: 'var(--color-base-content)' }}>YouTube Links</h3>
+                    <p className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 65%, transparent)' }}>Lecture or video links</p>
                   </button>
                   <button 
                     onClick={() => setShowUploadModal(true)}
-                    className="p-6 border-2 border-dashed border-gray-300 rounded-xl hover:border-blue-500 transition-colors cursor-pointer"
+                    className="p-6 rounded-xl transition-colors cursor-pointer abyss-card border-abyss"
+                    style={{ border: '2px dashed color-mix(in oklch, var(--color-base-100) 35%, transparent)' }}
                   >
-                    <LinkIcon className="w-8 h-8 text-green-600 mx-auto mb-3" />
-                    <h3 className="font-semibold text-gray-900 mb-2">Paste Content</h3>
-                    <p className="text-sm text-gray-600">Text or notes</p>
+                    <LinkIcon className="w-8 h-8 mx-auto mb-3" style={{ color: 'var(--color-success)' }} />
+                    <h3 className="font-semibold mb-2" style={{ color: 'var(--color-base-content)' }}>Paste Content</h3>
+                    <p className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 65%, transparent)' }}>Text or notes</p>
                   </button>
                 </div>
 
@@ -335,15 +340,15 @@ What would you like to explore today? You can upload materials, ask questions, o
                     <button
                       key={index}
                       onClick={() => handleQuickAction(action)}
-                      className="p-4 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-colors text-left"
+                      className="p-4 rounded-lg transition-colors text-left abyss-card hover:scale-[1.01] border-abyss"
                     >
                       <div className="flex items-center space-x-3">
-                        <div className={`p-2 rounded-lg ${action.color}`}>
-                          <action.icon className="w-4 h-4" />
+                        <div className={`p-2 rounded-lg`} style={{ background: 'color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
+                          <action.icon className="w-4 h-4" style={{ color: 'var(--color-primary)' }} />
                         </div>
                         <div>
-                          <div className="font-medium text-gray-900">{action.title}</div>
-                          <div className="text-xs text-gray-500">{action.description}</div>
+                          <div className="font-medium" style={{ color: 'var(--color-base-content)' }}>{action.title}</div>
+                          <div className="text-xs" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>{action.description}</div>
                         </div>
                       </div>
                     </button>
@@ -360,20 +365,19 @@ What would you like to explore today? You can upload materials, ask questions, o
                     key={message.id}
                     className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
-                    <div className={`max-w-3xl ${
-                      message.type === 'user'
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-white border border-gray-200'
-                    } rounded-xl p-4 shadow-sm`}>
+                    <div className={`max-w-3xl rounded-xl p-4 shadow-sm ${message.type === 'user' ? '' : 'abyss-card border-abyss'}`} style={{
+                      background: message.type === 'user' ? 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' : undefined,
+                      color: message.type === 'user' ? 'var(--color-accent-content)' : 'var(--color-base-content)'
+                    }}>
                       {message.type === 'ai' && (
                         <div className="flex items-center space-x-2 mb-3">
-                          <Brain className="w-5 h-5 text-blue-600" />
-                          <span className="font-semibold text-blue-600">AI Assistant</span>
+                          <Brain className="w-5 h-5" style={{ color: 'var(--color-primary)' }} />
+                          <span className="font-semibold" style={{ color: 'var(--color-primary)' }}>AI Assistant</span>
                         </div>
                       )}
-                      <div className={`text-sm ${message.type === 'user' ? 'text-white' : 'text-gray-900'}`}>
+                      <div className={`text-sm`}>
                         {message.type === 'ai' ? (
-                          <div className="prose prose-sm max-w-none prose-headings:text-gray-900 prose-p:text-gray-900 prose-strong:text-gray-900 prose-ul:text-gray-900 prose-ol:text-gray-900 prose-li:text-gray-900 prose-code:text-gray-900 prose-pre:text-gray-900 prose-blockquote:text-gray-900">
+                          <div className="prose prose-sm max-w-none" style={{ color: 'var(--color-base-content)' }}>
                             <ReactMarkdown remarkPlugins={[remarkGfm]}>
                               {message.content}
                             </ReactMarkdown>
@@ -382,9 +386,7 @@ What would you like to explore today? You can upload materials, ask questions, o
                           message.content
                         )}
                       </div>
-                      <div className={`text-xs mt-2 ${
-                        message.type === 'user' ? 'text-blue-100' : 'text-gray-500'
-                      }`}>
+                      <div className={`text-xs mt-2`} style={{ color: message.type === 'user' ? 'color-mix(in oklch, var(--color-accent-content) 80%, transparent)' : 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                         {message.timestamp}
                       </div>
                     </div>
@@ -393,15 +395,15 @@ What would you like to explore today? You can upload materials, ask questions, o
                 
                 {isGenerating && (
                   <div className="flex justify-start">
-                    <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+                    <div className="rounded-xl p-4 shadow-sm abyss-card border-abyss">
                       <div className="flex items-center space-x-2 mb-2">
-                        <Brain className="w-5 h-5 text-blue-600" />
-                        <span className="font-semibold text-blue-600">AI Assistant</span>
+                        <Brain className="w-5 h-5" style={{ color: 'var(--color-primary)' }} />
+                        <span className="font-semibold" style={{ color: 'var(--color-primary)' }}>AI Assistant</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                        <div className="w-2 h-2 rounded-full animate-bounce" style={{ background: 'var(--color-primary)' }}></div>
+                        <div className="w-2 h-2 rounded-full animate-bounce" style={{ background: 'var(--color-primary)', animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 rounded-full animate-bounce" style={{ background: 'var(--color-primary)', animationDelay: '0.2s' }}></div>
                       </div>
                     </div>
                   </div>
@@ -411,19 +413,20 @@ What would you like to explore today? You can upload materials, ask questions, o
           )}
 
           {/* Input Area */}
-          <div className="border-t border-gray-200 p-6">
+          <div className="p-6" style={{ borderTop: '1px solid color-mix(in oklch, var(--color-base-100) 45%, transparent)' }}>
             <div className="max-w-4xl mx-auto">
-              <div className="flex items-center space-x-3">
+              <div className="rounded-xl p-3 abyss-card border-abyss">
+                <div className="flex items-center space-x-3">
                 <div className="flex items-center space-x-2">
-                  <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                  <button className="p-2 rounded-lg transition-colors" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                     <ImageIcon className="w-5 h-5" />
                   </button>
-                  <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                  <button className="p-2 rounded-lg transition-colors" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                     <Globe className="w-5 h-5" />
                   </button>
-                  <div className="flex items-center space-x-1 px-3 py-1 bg-gray-100 rounded-lg">
-                    <span className="text-sm text-gray-600">{selectedFiles}</span>
-                    <ChevronDown className="w-4 h-4 text-gray-400" />
+                  <div className="flex items-center space-x-1 px-3 py-1 rounded-lg border-abyss" style={{ background: 'color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
+                    <span className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>{selectedFiles}</span>
+                    <ChevronDown className="w-4 h-4" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }} />
                   </div>
                 </div>
                 
@@ -434,17 +437,20 @@ What would you like to explore today? You can upload materials, ask questions, o
                     onChange={(e) => setNewMessage(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
                     placeholder="Ask Mentora AI anything..."
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg focus:ring-2"
+                    style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent)', background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
                   />
                 </div>
                 
                 <button
                   onClick={sendMessage}
                   disabled={!newMessage.trim() || isGenerating}
-                  className="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="p-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed btn-abyss"
+                  style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))', color: 'var(--color-accent-content)' }}
                 >
                   <Send className="w-5 h-5" />
                 </button>
+                </div>
               </div>
             </div>
           </div>
@@ -453,19 +459,20 @@ What would you like to explore today? You can upload materials, ask questions, o
         {/* Upload Modal */}
         {showUploadModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-xl p-6 w-full max-w-md mx-4">
+            <div className="rounded-xl p-6 w-full max-w-md mx-4 abyss-card border-abyss" style={{ background: 'var(--color-base-200)' }}>
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">Upload Content</h3>
+                <h3 className="text-lg font-semibold" style={{ color: 'var(--color-base-content)' }}>Upload Content</h3>
                 <button 
                   onClick={() => setShowUploadModal(false)}
-                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+                  className="p-2 rounded-lg transition-colors"
+                  style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
               
               <div className="space-y-4">
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
+                <div className="rounded-lg p-6 text-center transition-colors border-abyss" style={{ border: '2px dashed color-mix(in oklch, var(--color-base-100) 35%, transparent)' }}>
                   <input
                     type="file"
                     onChange={handleFileUpload}
@@ -474,22 +481,22 @@ What would you like to explore today? You can upload materials, ask questions, o
                     id="file-upload"
                   />
                   <label htmlFor="file-upload" className="cursor-pointer">
-                    <Upload className="w-8 h-8 text-gray-400 mx-auto mb-3" />
-                    <p className="text-gray-600 mb-2">Drag and drop files here</p>
-                    <p className="text-sm text-gray-500">or click to browse</p>
+                    <Upload className="w-8 h-8 mx-auto mb-3" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }} />
+                    <p className="mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Drag and drop files here</p>
+                    <p className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 55%, transparent)' }}>or click to browse</p>
                   </label>
                 </div>
                 
                 <div className="space-y-2">
-                  <button className="w-full p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left">
+                  <button className="w-full p-3 rounded-lg transition-colors text-left border-abyss" style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
                     <div className="flex items-center space-x-3">
-                      <Video className="w-5 h-5 text-red-600" />
+                      <Video className="w-5 h-5" style={{ color: 'var(--color-error)' }} />
                       <span>Add YouTube Link</span>
                     </div>
                   </button>
-                  <button className="w-full p-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-left">
+                  <button className="w-full p-3 rounded-lg transition-colors text-left border-abyss" style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
                     <div className="flex items-center space-x-3">
-                      <LinkIcon className="w-5 h-5 text-green-600" />
+                      <LinkIcon className="w-5 h-5" style={{ color: 'var(--color-success)' }} />
                       <span>Paste Text Content</span>
                     </div>
                   </button>
@@ -499,11 +506,12 @@ What would you like to explore today? You can upload materials, ask questions, o
               <div className="flex items-center justify-end space-x-3 mt-6">
                 <button
                   onClick={() => setShowUploadModal(false)}
-                  className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="px-4 py-2 rounded-lg transition-colors btn-abyss-outline"
+                  style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)', color: 'var(--color-base-content)' }}
                 >
                   Cancel
                 </button>
-                <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                <button className="px-4 py-2 rounded-lg transition-colors btn-abyss" style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))', color: 'var(--color-accent-content)' }}>
                   Upload
                 </button>
               </div>

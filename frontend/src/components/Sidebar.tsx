@@ -96,23 +96,28 @@ export default function Sidebar({ userType }: SidebarProps) {
   const UserIcon = getUserIcon();
 
   return (
-    <div className={`bg-white border-r border-gray-200 h-full transition-all duration-300 ${
-      isCollapsed ? 'w-16' : 'w-64'
-    }`}>
+    <div
+      className={`h-full transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'}`}
+      style={{
+        background: 'var(--color-base-200)',
+        borderRight: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)'
+      }}
+    >
       {/* Header */}
-      <div className="p-4 border-b border-gray-200">
+      <div className="p-4" style={{ borderBottom: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
         <div className="flex items-center justify-between">
           {!isCollapsed && (
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <Brain className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}>
+                <Brain className="w-5 h-5" style={{ color: 'var(--color-accent-content)' }} />
               </div>
-              <span className="text-xl font-bold text-gray-900">Mentora</span>
+              <span className="text-xl font-bold" style={{ color: 'var(--color-base-content)' }}>Mentora</span>
             </div>
           )}
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="p-2 rounded-lg transition-colors"
+            style={{ color: 'var(--color-base-content)', background: 'transparent' }}
           >
             {isCollapsed ? <Menu className="w-5 h-5" /> : <X className="w-5 h-5" />}
           </button>
@@ -120,15 +125,15 @@ export default function Sidebar({ userType }: SidebarProps) {
       </div>
 
       {/* User Info */}
-      <div className="p-4 border-b border-gray-200">
+      <div className="p-4" style={{ borderBottom: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
         <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'space-x-3'}`}>
-          <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-            <UserIcon className="w-5 h-5 text-white" />
+          <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))' }}>
+            <UserIcon className="w-5 h-5" style={{ color: 'var(--color-accent-content)' }} />
           </div>
           {!isCollapsed && (
             <div>
-              <div className="font-semibold text-gray-900">Demo User</div>
-              <div className="text-sm text-gray-500">{getUserTypeDisplay()}</div>
+              <div className="font-semibold" style={{ color: 'var(--color-base-content)' }}>Demo User</div>
+              <div className="text-sm" style={{ color: 'color-mix(in oklch, var(--color-base-content) 65%, transparent)' }}>{getUserTypeDisplay()}</div>
             </div>
           )}
         </div>
@@ -143,17 +148,19 @@ export default function Sidebar({ userType }: SidebarProps) {
               <li key={item.name}>
                 <Link
                   href={item.href}
-                  className={`flex items-center px-3 py-2 rounded-lg transition-colors ${
-                    isActive
-                      ? 'bg-blue-50 text-blue-700 border-r-2 border-blue-700'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  } ${isCollapsed ? 'justify-center' : ''}`}
+                  className={`flex items-center px-3 py-2 rounded-lg transition-all ${isCollapsed ? 'justify-center' : ''}`}
+                  style={{
+                    color: isActive ? 'var(--color-primary-content)' : 'color-mix(in oklch, var(--color-base-content) 80%, transparent)',
+                    background: isActive ? 'color-mix(in oklch, var(--color-base-100) 30%, transparent)' : 'transparent',
+                    borderRight: isActive ? '2px solid var(--color-primary)' : '2px solid transparent',
+                    border: isActive ? '1px solid color-mix(in oklch, var(--color-primary) 35%, transparent)' : '1px solid transparent'
+                  }}
                   title={isCollapsed ? item.name : undefined}
                 >
                   <item.icon className={`w-5 h-5 ${isCollapsed ? '' : 'mr-3'}`} />
                   {!isCollapsed && (
                     <>
-                      <span className="font-medium">{item.name}</span>
+                      <span className="font-medium" style={{ color: 'inherit' }}>{item.name}</span>
                       {isActive && <ChevronRight className="w-4 h-4 ml-auto" />}
                     </>
                   )}
@@ -165,12 +172,16 @@ export default function Sidebar({ userType }: SidebarProps) {
       </nav>
 
       {/* Bottom Actions */}
-      <div className="p-4 border-t border-gray-200 space-y-2">
+      <div className="p-4 space-y-2" style={{ borderTop: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
         <Link
           href={`/dashboard/${userType}/settings`}
-          className={`flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors ${
-            isCollapsed ? 'justify-center' : ''
-          } ${pathname === `/dashboard/${userType}/settings` ? 'bg-blue-50 text-blue-700 border-r-2 border-blue-700' : ''}`}
+          className={`flex items-center px-3 py-2 rounded-lg transition-colors ${isCollapsed ? 'justify-center' : ''}`}
+          style={{
+            color: pathname === `/dashboard/${userType}/settings` ? 'var(--color-primary-content)' : 'color-mix(in oklch, var(--color-base-content) 80%, transparent)',
+            background: pathname === `/dashboard/${userType}/settings` ? 'color-mix(in oklch, var(--color-base-100) 30%, transparent)' : 'transparent',
+            borderRight: pathname === `/dashboard/${userType}/settings` ? '2px solid var(--color-primary)' : '2px solid transparent',
+            border: pathname === `/dashboard/${userType}/settings` ? '1px solid color-mix(in oklch, var(--color-primary) 35%, transparent)' : '1px solid transparent'
+          }}
           title={isCollapsed ? 'Settings' : undefined}
         >
           <Settings className={`w-5 h-5 ${isCollapsed ? '' : 'mr-3'}`} />
@@ -179,9 +190,8 @@ export default function Sidebar({ userType }: SidebarProps) {
         
         <Link
           href="/"
-          className={`flex items-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors ${
-            isCollapsed ? 'justify-center' : ''
-          }`}
+          className={`flex items-center px-3 py-2 rounded-lg transition-colors ${isCollapsed ? 'justify-center' : ''}`}
+          style={{ color: 'color-mix(in oklch, var(--color-base-content) 80%, transparent)' }}
           title={isCollapsed ? 'Logout' : undefined}
         >
           <LogOut className={`w-5 h-5 ${isCollapsed ? '' : 'mr-3'}`} />

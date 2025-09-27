@@ -141,51 +141,54 @@ export default function QuizGeneratorPage() {
       <div className="p-6">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Flashcard-Style Quiz Generator</h1>
-          <p className="text-gray-600">Create interactive flashcard-style MCQ quizzes using AI or build them manually</p>
+          <h1 className="text-3xl font-bold mb-2" style={{ color: 'var(--color-base-content)' }}>Flashcard-Style Quiz Generator</h1>
+          <p style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Create interactive flashcard-style MCQ quizzes using AI or build them manually</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Quiz Configuration */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 sticky top-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Quiz Settings</h2>
+            <div className="rounded-xl p-6 shadow-sm abyss-card border-abyss sticky top-6">
+              <h2 className="text-xl font-semibold mb-4" style={{ color: 'var(--color-base-content)' }}>Quiz Settings</h2>
               
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
                     Quiz Title
                   </label>
                   <input
                     type="text"
                     value={quizTitle}
                     onChange={(e) => setQuizTitle(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 rounded-lg focus:ring-2"
+                    style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent)', background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
                     placeholder="Enter quiz title"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
                     Description
                   </label>
                   <textarea
                     value={quizDescription}
                     onChange={(e) => setQuizDescription(e.target.value)}
                     rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 rounded-lg focus:ring-2"
+                    style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent)', background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
                     placeholder="Describe the quiz content"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
                     Source Content
                   </label>
                   <select
                     value={selectedContent}
                     onChange={(e) => setSelectedContent(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 rounded-lg focus:ring-2 border-abyss"
+                    style={{ background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
                   >
                     <option value="">Select content to base quiz on</option>
                     {contentOptions.map(option => (
@@ -199,7 +202,8 @@ export default function QuizGeneratorPage() {
                 <button
                   onClick={generateQuiz}
                   disabled={isGenerating || !selectedContent}
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                  className="w-full py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center btn-abyss"
+                  style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))', color: 'var(--color-accent-content)' }}
                 >
                   {isGenerating ? (
                     <>
@@ -214,10 +218,10 @@ export default function QuizGeneratorPage() {
                   )}
                 </button>
 
-                <div className="border-t border-gray-200 pt-4">
+                <div className="pt-4" style={{ borderTop: '1px solid color-mix(in oklch, var(--color-base-100) 30%, transparent)' }}>
                   <button
                     onClick={addCustomQuestion}
-                    className="w-full bg-gray-100 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors flex items-center justify-center"
+                    className="w-full py-3 rounded-lg font-semibold transition-colors flex items-center justify-center btn-abyss-outline"
                   >
                     <Plus className="w-5 h-5 mr-2" />
                     Add Custom Question
@@ -229,19 +233,20 @@ export default function QuizGeneratorPage() {
 
           {/* Questions Editor */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="rounded-xl p-6 shadow-sm abyss-card border-abyss">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold text-gray-900">Questions</h2>
+                <h2 className="text-xl font-semibold" style={{ color: 'var(--color-base-content)' }}>Questions</h2>
                 <div className="flex items-center space-x-2">
-                  <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                  <button className="p-2 rounded-lg transition-colors border-abyss" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                     <Eye className="w-5 h-5" />
                   </button>
-                  <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
+                  <button className="p-2 rounded-lg transition-colors border-abyss" style={{ color: 'color-mix(in oklch, var(--color-base-content) 60%, transparent)' }}>
                     <Download className="w-5 h-5" />
                   </button>
                   <button 
                     onClick={saveQuiz}
-                    className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2"
+                    className="px-4 py-2 rounded-lg transition-colors flex items-center space-x-2 btn-abyss"
+                    style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))', color: 'var(--color-accent-content)' }}
                   >
                     <Save className="w-4 h-4" />
                     <span>Save Quiz</span>
@@ -252,11 +257,12 @@ export default function QuizGeneratorPage() {
               {questions.length === 0 ? (
                 <div className="text-center py-12">
                   <HelpCircle className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">No questions yet</h3>
-                  <p className="text-gray-600 mb-4">Generate questions with AI or add them manually</p>
+                  <h3 className="text-lg font-semibold mb-2" style={{ color: 'var(--color-base-content)' }}>No questions yet</h3>
+                  <p className="mb-4" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>Generate questions with AI or add them manually</p>
                   <button
                     onClick={addCustomQuestion}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                    className="px-4 py-2 rounded-lg transition-colors btn-abyss"
+                    style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))', color: 'var(--color-accent-content)' }}
                   >
                     Add First Question
                   </button>
@@ -264,18 +270,18 @@ export default function QuizGeneratorPage() {
               ) : (
                 <div className="space-y-6">
                   {questions.map((question, index) => (
-                    <div key={question.id} className="border border-gray-200 rounded-lg p-6">
+                    <div key={question.id} className="rounded-lg p-6 border-abyss abyss-card">
                       <div className="flex items-start justify-between mb-4">
-                        <h3 className="font-semibold text-gray-900">Question {index + 1}</h3>
+                        <h3 className="font-semibold" style={{ color: 'var(--color-base-content)' }}>Question {index + 1}</h3>
                         <div className="flex items-center space-x-2">
                           {question.isCustom && (
-                            <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+                            <span className="px-2 py-1 text-xs rounded-full border-abyss" style={{ color: 'var(--color-primary)', background: 'color-mix(in oklch, var(--color-primary) 15%, transparent)' }}>
                               Custom
                             </span>
                           )}
                           <button
                             onClick={() => deleteQuestion(index)}
-                            className="p-1 text-red-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
+                            className="p-1 rounded transition-colors border-abyss" style={{ color: 'var(--color-error)' }}
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>
@@ -284,20 +290,21 @@ export default function QuizGeneratorPage() {
 
                       <div className="space-y-4">
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <label className="block text-sm font-medium mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
                             Question Text
                           </label>
                           <textarea
                             value={question.question}
                             onChange={(e) => updateQuestion(index, 'question', e.target.value)}
                             rows={2}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 rounded-lg focus:ring-2"
+                            style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent)', background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
                             placeholder="Enter your question"
                           />
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <label className="block text-sm font-medium mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
                             Answer Options
                           </label>
                           <div className="space-y-2">
@@ -318,7 +325,8 @@ export default function QuizGeneratorPage() {
                                     newOptions[optionIndex] = e.target.value;
                                     updateQuestion(index, 'options', newOptions);
                                   }}
-                                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                  className="flex-1 px-3 py-2 rounded-lg focus:ring-2"
+                                  style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent)', background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
                                   placeholder={`Option ${optionIndex + 1}`}
                                 />
                               </div>
@@ -327,14 +335,15 @@ export default function QuizGeneratorPage() {
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                          <label className="block text-sm font-medium mb-2" style={{ color: 'color-mix(in oklch, var(--color-base-content) 70%, transparent)' }}>
                             Explanation (Optional)
                           </label>
                           <textarea
                             value={question.explanation}
                             onChange={(e) => updateQuestion(index, 'explanation', e.target.value)}
                             rows={2}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 rounded-lg focus:ring-2"
+                            style={{ border: '1px solid color-mix(in oklch, var(--color-base-100) 35%, transparent)', background: 'color-mix(in oklch, var(--color-base-300) 80%, transparent)', color: 'var(--color-base-content)', outlineColor: 'var(--color-primary)' }}
                             placeholder="Explain why this is the correct answer"
                           />
                         </div>
