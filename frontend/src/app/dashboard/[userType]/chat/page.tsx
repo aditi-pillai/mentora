@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import { useParams } from 'next/navigation';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import DashboardLayout from '@/components/DashboardLayout';
 import { 
   Send,
@@ -370,7 +372,15 @@ What would you like to explore today? You can upload materials, ask questions, o
                         </div>
                       )}
                       <div className={`text-sm ${message.type === 'user' ? 'text-white' : 'text-gray-900'}`}>
-                        {message.content}
+                        {message.type === 'ai' ? (
+                          <div className="prose prose-sm max-w-none prose-headings:text-gray-900 prose-p:text-gray-900 prose-strong:text-gray-900 prose-ul:text-gray-900 prose-ol:text-gray-900 prose-li:text-gray-900 prose-code:text-gray-900 prose-pre:text-gray-900 prose-blockquote:text-gray-900">
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                              {message.content}
+                            </ReactMarkdown>
+                          </div>
+                        ) : (
+                          message.content
+                        )}
                       </div>
                       <div className={`text-xs mt-2 ${
                         message.type === 'user' ? 'text-blue-100' : 'text-gray-500'
